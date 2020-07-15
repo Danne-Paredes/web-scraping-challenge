@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+        
+        
+        <div class="container-fluid">
+                <div class="jumbotron text-center">
+                <h1>Mission to Mars</h1>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Data</a></p>
+                </div>
+            <div class="row">
+                <h1>Latest Mars News</h1>
+                <h2>{{ mars.news_title }}</h2>
+                <h3 class="lead">{{ mars.news_p }}</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h1>Featured Mars Image</h1>
+                    <img style="width: 70%;" src="{{mars.featured_image_url}}" alt="Featured Image">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="row">
+                        <div class="border">
+                            <h3>Current Weather on Mars</h3>
+                            <p>{{ mars.mars_weather }}</p>
+                        </div>
+                        <div>
+                            <h3>Mars Facts</h3>
+                            {{ mars.mars_facts|safe }}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1>Mars Hemispheres</h1>
+                {% for item in mars.hemisphere_image_urls %}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                            <img class="card-img-top" src="{{ item.url }}" />
+                            <div class="card-body">
+                                <p class="card-text">{{ item.title }}</p>
+                                <p>test</p>
+                            </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
